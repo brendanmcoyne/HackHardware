@@ -9,7 +9,7 @@ const Contact = () => {
     const sendMessage = async () => {
         setSending(true);
         try {
-            const res = await fetch('http://localhost:3000/send-email', {
+            const res = await fetch('https://hack-hardware-api.vercel.app/send-email', {
                 method: 'POST',
                 headers: { 'Content-Type': 'application/json' },
                 body: JSON.stringify({ name, email, message }),

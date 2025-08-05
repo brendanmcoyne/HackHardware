@@ -6,18 +6,13 @@ import dotenv from 'dotenv';
 dotenv.config();
 
 const app = express();
-app.use(cors({
-    origin: [
-        'http://localhost:5173',
-        'https://hack-hardware.vercel.app'
-    ]
-}));
+app.use(cors({origin: 'https://hack-hardware.vercel.app'}));
 app.use(express.json());
 
 const oauth2Client = new google.auth.OAuth2(
     process.env.CLIENT_ID,
     process.env.CLIENT_SECRET,
-    process.env.REDIRECT_URI || 'http://localhost:3000/oauth2callback'
+    process.env.REDIRECT_URI
 );
 
 let savedTokens = null;
