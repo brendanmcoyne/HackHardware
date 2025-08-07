@@ -2,6 +2,7 @@ import Nav from "./components/Nav.tsx";
 import Home from "./components/Home.tsx";
 import ExecBoard from "./components/ExecBoard.tsx";
 import Contact from "./components/Contact.tsx";
+import FAQ from "./components/FAQ.tsx";
 import Footer from "./components/Footer.tsx";
 import styled from "styled-components";
 import { createBrowserRouter, Route, RouterProvider, Routes } from "react-router";
@@ -29,6 +30,7 @@ function Root() {
                     <Route path="/" element={<Home />} />
                     <Route path="/exec" element={<Content><ExecBoard /></Content>} />
                     <Route path="/contact" element={<Content><Contact /></Content>} />
+                    <Route path="/faq" element={<Content><FAQ /></Content>} />
                 </Routes>
             </MainWrapper>
             <Footer/>

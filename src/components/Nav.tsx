@@ -9,7 +9,7 @@ const StyledNavContainer = styled.div`
     left: 0;
     right: 0;
     z-index: 1000;
-    padding: 6px;
+    padding: 11px;
     background-color: #006eaa;
     box-shadow: 0 2px 5px rgba(0,0,0,0.2);
 `;
@@ -91,10 +91,9 @@ export default function Nav() {
                 <StyledList>
                     <StyledLink><Link to="/">Home</Link></StyledLink>
                     <StyledLink><Link to="/exec">Executive Board</Link></StyledLink>
+                    <StyledLink><Link to="/events">Events</Link></StyledLink>
                     <StyledLink><Link to="/contact">Contact</Link></StyledLink>
-                    <StyledLink><Link to="/archives">Archives</Link></StyledLink>
-                    <StyledLink><Link to="/season">Season</Link></StyledLink>
-                    <StyledLink><Link to="/headlines">Headlines</Link></StyledLink>
+                    <StyledLink><Link to="/faq">FAQ</Link></StyledLink>
                 </StyledList>
             </StyledNav>
         </StyledNavContainer>
