@@ -14,8 +14,8 @@ const SCOPES = ['https://www.googleapis.com/auth/gmail.send'];
 
 async function main() {
     const authUrl = oauth2Client.generateAuthUrl({
-        access_type: 'offline', // important to get a refresh_token
-        scope: SCOPES,
+        access_type: 'offline', // this is required!
+        scope: ['https://www.googleapis.com/auth/gmail.send']
     });
 
     console.log('Authorize this app by visiting this URL:\n', authUrl);
