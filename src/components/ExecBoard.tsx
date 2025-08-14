@@ -60,70 +60,119 @@ const TextSection = styled.p`
     font-size: 20px;
 `;
 
-const TitleText = styled.h2`
+const SectionText = styled.h2`
     font-weight: bold;
     font-size: 50px;
 `;
 
+const LogoWrapper = styled.div`
+    width: 100%;
+    height: 700px;
+    background-image: url('/CandJ.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;   
+    z-index: 0;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;         
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;        
+    }
+`;
+
+
+const WrapperDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-20px);
+    position: relative;
+    z-index: 2;
+`;
+
+const TitleText = styled.h2`
+    font-weight: bold;
+    font-size: 50px;
+    margin: 0;
+    line-height: 1.1;
+    color: lightgray;
+    z-index: 1;
+`;
+
 export default function ExecBoard() {
     return (
-        <Page>
-            <TitleText>Meet the Executive Board!</TitleText>
-            <TextSection>Our Executive Board is a passionate team of student leaders dedicated to bridging the gap between
-            hardware and software. Each member brings unique strengths—from technical expertise to outreach and
-            organization—that help foster a supportive, innovative, and inclusive community. Get to know the
-            people who make it all happen!</TextSection>
-            <PhotoDiv>
-                <BoardMember>
-                    <Image src="/Christian.JPG" alt={"Chris"} style={{ objectPosition: "center top" }}/>
-                    <Name>Christian Hanson</Name>
-                    <Title>President</Title>
-                    <Class>Class of 2026</Class>
-                </BoardMember>
-                <BoardMember>
-                    <Image src="/Valerie.jpg" alt={"Valerie"} />
-                    <Name>Valerie Dam-Nguyen</Name>
-                    <Title>Vice President</Title>
-                    <Class>Class of 2028</Class>
-                </BoardMember>
-                <BoardMember>
-                    <Image src="/Primah.jpeg" alt={"Primah"} />
-                    <Name>Primah Muwanga</Name>
-                    <Title>Secretary</Title>
-                    <Class>Class of 2026</Class>
-                </BoardMember>
-                <BoardMember>
-                    <Image src="/Brendan.jpg" alt={"Brendan"} style={{ objectPosition: "center top" }}/>
-                    <Name>Brendan Coyne</Name>
-                    <Title>Treasurer</Title>
-                    <Class>Class of 2026</Class>
-                </BoardMember>
-                <BoardMember>
-                    <Image src="/Evan.JPG" alt={"Evan"} />
-                    <Name>Evan Leong</Name>
-                    <Title>Leadership Shadow</Title>
-                    <Class>Class of 2028</Class>
-                </BoardMember>
-                <BoardMember>
-                    <Image src="/HackHardware.png" alt={"Elina"} style={{backgroundColor: "white"}} />
-                    <Name>Elina Wang</Name>
-                    <Title>Outreach & Marketing Liaison</Title>
-                    <Class>Class of 2028</Class>
-                </BoardMember>
-                <BoardMember>
-                    <Image src="/Justin.png" alt={"Justin"} />
-                    <Name>Justin Nascimento</Name>
-                    <Title>Technical Coordinator</Title>
-                    <Class>Class of 2026</Class>
-                </BoardMember>
-                <BoardMember>
-                    <Image src="/Felipe.JPG" alt={"Felipe"} />
-                    <Name>Felipe Donati Chiara</Name>
-                    <Title>Technical Coordinator</Title>
-                    <Class>Class of 2028</Class>
-                </BoardMember>
-            </PhotoDiv>
-        </Page>
+        <>
+            <LogoWrapper>
+                <WrapperDiv>
+                    <TitleText>Meet the Executive Board!</TitleText>
+                </WrapperDiv>
+            </LogoWrapper>
+
+            <Page>
+                <SectionText>Meet the Executive Board!</SectionText>
+                <TextSection>Our Executive Board is a passionate team of student leaders dedicated to bridging the gap between
+                    hardware and software. Each member brings unique strengths—from technical expertise to outreach and
+                    organization—that help foster a supportive, innovative, and inclusive community. Get to know the
+                    people who make it all happen!</TextSection>
+                <PhotoDiv>
+                    <BoardMember>
+                        <Image src="/Christian.JPG" alt={"Chris"} style={{ objectPosition: "center top" }}/>
+                        <Name>Christian Hanson</Name>
+                        <Title>President</Title>
+                        <Class>Class of 2026</Class>
+                    </BoardMember>
+                    <BoardMember>
+                        <Image src="/Valerie.jpg" alt={"Valerie"} />
+                        <Name>Valerie Dam-Nguyen</Name>
+                        <Title>Vice President</Title>
+                        <Class>Class of 2028</Class>
+                    </BoardMember>
+                    <BoardMember>
+                        <Image src="/Primah.jpeg" alt={"Primah"} />
+                        <Name>Primah Muwanga</Name>
+                        <Title>Secretary</Title>
+                        <Class>Class of 2026</Class>
+                    </BoardMember>
+                    <BoardMember>
+                        <Image src="/Brendan.jpg" alt={"Brendan"} style={{ objectPosition: "center top" }}/>
+                        <Name>Brendan Coyne</Name>
+                        <Title>Treasurer</Title>
+                        <Class>Class of 2026</Class>
+                    </BoardMember>
+                    <BoardMember>
+                        <Image src="/Evan.JPG" alt={"Evan"} />
+                        <Name>Evan Leong</Name>
+                        <Title>Leadership Shadow</Title>
+                        <Class>Class of 2028</Class>
+                    </BoardMember>
+                    <BoardMember>
+                        <Image src="/HackHardware.png" alt={"Elina"} style={{backgroundColor: "white"}} />
+                        <Name>Elina Wang</Name>
+                        <Title>Outreach & Marketing Liaison</Title>
+                        <Class>Class of 2028</Class>
+                    </BoardMember>
+                    <BoardMember>
+                        <Image src="/Justin.png" alt={"Justin"} />
+                        <Name>Justin Nascimento</Name>
+                        <Title>Technical Coordinator</Title>
+                        <Class>Class of 2026</Class>
+                    </BoardMember>
+                    <BoardMember>
+                        <Image src="/Felipe.JPG" alt={"Felipe"} />
+                        <Name>Felipe Donati Chiara</Name>
+                        <Title>Technical Coordinator</Title>
+                        <Class>Class of 2028</Class>
+                    </BoardMember>
+                </PhotoDiv>
+            </Page>
+        </>
+
 
     );
 }

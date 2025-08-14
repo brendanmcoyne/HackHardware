@@ -5,7 +5,6 @@ const Page = styled.div`
     flex-direction: column;
     align-items: center;
     justify-content: center;
-    min-height: calc(100vh - 70px);
     width: 100%;
     box-sizing: border-box;
     text-align: center;
@@ -20,15 +19,15 @@ const LogoWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;    /* IMPORTANT */
+    position: relative;   
     z-index: 0;
 
     &::before {
         content: "";
         position: absolute;
-        inset: 0;           /* shorthand for top:0; bottom:0; left:0; right:0 */
+        inset: 0;         
         background: rgba(0, 0, 0, 0.4);
-        z-index: 1;         /* above background but below content */
+        z-index: 1;        
     }
 `;
 
@@ -62,6 +61,10 @@ const Image = styled.img`
     z-index: 2;
 `;
 
+const TextPassage = styled.p`
+    max-width: 700px;
+    font-size: 20px;
+`;
 
 
 export default function Home() {
@@ -74,20 +77,25 @@ export default function Home() {
                 </WrapperDiv>
             </LogoWrapper>
 
-            <Page>
-                <p>HackHardware is one of Boston University's top engineering clubs. We help to bridge the gap
+            <Page style={{marginTop: "140px" }}>
+                <TitleText style={{color: "black", marginBottom: "0"}}>About Us</TitleText>
+                <TextPassage style={{marginTop: "0"}}>HackHardware is one of Boston University's top engineering clubs. We help to bridge the gap
                     between hardware and software engineering. We offer hands-on learning through our biweekly
                     meetings, guiding members in designing, prototyping, and programming engineering projects. Our
                     vision is to cultivate well-rounded engineers who can confidently tackle complex challenges in
                     all areas of engineering and science.
-                </p>
+                </TextPassage>
 
-                <p>Each semester, we host hackathons that challenge participants to bring innovative ideas to life
+                <TextPassage>Each semester, we host hackathons that challenge participants to bring innovative ideas to life
                     through collaborative, fast-paced engineering. These events are open to all experience levels and
                     provide a welcoming environment to learn new skills, explore creative solutions, and build real
                     hardware-software projects. From Arduino-based systems to Raspberry Pi integrations, our hackathons
                     are a hands-on combination of engineering, teamwork, and problem-solving.
-                </p>
+                </TextPassage>
+            </Page>
+
+            <Page>
+                <TextPassage>Yurtis</TextPassage>
             </Page>
         </>
     );

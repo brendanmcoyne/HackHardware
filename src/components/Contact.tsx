@@ -25,21 +25,21 @@ const Title = styled.h2`
     margin-bottom: 1.5rem;
 `;
 
-const Input = styled.input`
+const Input = styled.input<{ $error?: boolean }>`
     width: 100%;
     padding: 10px;
     margin-bottom: 1rem;
-    border: none;
+    border: ${({ $error }) => ($error ? '2px solid salmon' : 'none')};
     border-radius: 8px;
     font-size: 1rem;
 `;
 
-const TextArea = styled.textarea`
+const TextArea = styled.textarea<{ $error?: boolean }>`
     width: 100%;
     padding: 10px;
     height: 120px;
     margin-bottom: 1rem;
-    border: none;
+    border: ${({ $error }) => ($error ? '2px solid salmon' : 'none')};
     border-radius: 8px;
     font-size: 1rem;
     resize: none;
@@ -68,8 +68,9 @@ const Button = styled.button`
 
 const StatusMessage = styled.p<{ status: string }>`
     color: ${({ status }) =>
-    status === 'success' ? 'lightgreen' :
-        status === 'fail' || status === 'error' ? 'salmon' : 'white'};
+    status === 'success' ? 'lightgreen' : 
+    status === 'fail' || status === 'error' ? 'salmon' :
+    status === 'missing' ? 'salmon' : 'white'};
     margin-top: 1rem;
     text-align: center;
 `;
@@ -82,6 +83,12 @@ const Contact = () => {
     const [status, setStatus] = useState<string | null>(null);
 
     const sendMessage = async () => {
+        // Check for empty fields before sending
+        if (!name.trim() || !email.trim() || !message.trim()) {
+            setStatus('missing');
+            return;
+        }
+
         setSending(true);
         setStatus(null);
         try {
@@ -107,6 +114,7 @@ const Contact = () => {
         }
     };
 
+
     return (
         <Page>
             <Title>Contact Us</Title>
@@ -115,22 +123,26 @@ const Contact = () => {
                     placeholder="Your Name"
                     value={name}
                     onChange={e => setName(e.target.value)}
+                    $error={status === 'missing' && !name.trim()}
                 />
                 <Input
                     placeholder="Your Email"
                     value={email}
                     onChange={e => setEmail(e.target.value)}
+                    $error={status === 'missing' && !email.trim()}
                 />
                 <TextArea
                     placeholder="Your Message"
                     value={message}
                     onChange={e => setMessage(e.target.value)}
+                    $error={status === 'missing' && !message.trim()}
                 />
                 <Button onClick={sendMessage} disabled={sending}>
                     {sending ? 'Sending...' : 'Send Message'}
                 </Button>
                 {status && (
                     <StatusMessage status={status}>
+                        {status === 'missing' && '⚠️ Please fill out all fields.'}
                         {status === 'success' && '✅ Message sent successfully!'}
                         {status === 'fail' && '❌ Failed to send message. Please try again.'}
                         {status === 'error' && '⚠️ An unexpected error occurred.'}

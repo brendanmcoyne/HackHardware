@@ -27,9 +27,49 @@ const Question = styled.div`
   align-items: center;
 `;
 
+const SectionText = styled.h2`
+    font-weight: bold;
+    font-size: 50px;
+`;
+
+const LogoWrapper = styled.div`
+    width: 100%;
+    height: 700px;
+    background-image: url('/CandJ.jpg');
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;   
+    z-index: 0;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;         
+        background: rgba(0, 0, 0, 0.4);
+        z-index: 1;        
+    }
+`;
+
+
+const WrapperDiv = styled.div`
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    transform: translateY(-20px);
+    position: relative;
+    z-index: 2;
+`;
+
 const TitleText = styled.h2`
     font-weight: bold;
     font-size: 50px;
+    margin: 0;
+    line-height: 1.1;
+    color: lightgray;
+    z-index: 1;
 `;
 
 function FAQEntry({ question, answer }: { question: string; answer: React.ReactNode }) {
@@ -64,58 +104,67 @@ function FAQEntry({ question, answer }: { question: string; answer: React.ReactN
 
 export default function FAQ() {
     return (
-        <Page>
-            <TitleText>Frequently Asked Questions</TitleText>
+        <>
+            <LogoWrapper>
+                <WrapperDiv>
+                    <TitleText>Frequently Asked Questions</TitleText>
+                </WrapperDiv>
+            </LogoWrapper>
 
-            <FAQEntry
-                question="Who can attend our meetings/events?"
-                answer="HackHardware is open to all undergraduate and graduate students at BU.
+            <Page>
+                <SectionText>HackHardware FAQs</SectionText>
+
+                <FAQEntry
+                    question="Who can attend our meetings/events?"
+                    answer="HackHardware is open to all undergraduate and graduate students at BU.
                 All majors are welcome and encouraged to participate."
-            />
-            <FAQEntry
-                question="What events does HackHardware have?"
-                answer="HackHardware organizes hackathons, workshops, guest lectures, technical
+                />
+                <FAQEntry
+                    question="What events does HackHardware have?"
+                    answer="HackHardware organizes hackathons, workshops, guest lectures, technical
                 demonstrations, and other events. We provide students with opportunities to participate
                 in engineering projects and learn about specific hardware and software topics. We encourage
                 everyone to come to our biweekly meetings and read our weekly emails."
-            />
-            <FAQEntry
-                question="What are tracks?"
-                answer="Tracks are specific projects individuals or groups participate in during a hackathon.
+                />
+                <FAQEntry
+                    question="What are tracks?"
+                    answer="Tracks are specific projects individuals or groups participate in during a hackathon.
                 Each track contains a different assignment of varying difficulty. For events we typically have tracks
                 for all skill levels so that everyone can participate regardless of experience. "
-            />
-            <FAQEntry
-                question="How do I choose a track?"
-                answer={
-                    <>
-                        <p>In our hackathon applications, you can choose the track that you are interested in! If you
-                            wish to change your track, you have until two weeks before the hackathon commences to email
-                            <a href="mailto:hackh@bu.edu"> hackh@bu.edu</a> to change your track.</p>
-                    </>
-                }
-            />
-            <FAQEntry
-                question="What if I'm unable to attend the hackathon I signed up for?"
-                answer={
-                    <>
-                        <p>If you're suddenly unable to attend a hackathon, please email
-                            <a href="mailto:hackh@bu.edu"> hackh@bu.edu</a> right away.
-                            For most of our events we have a waitlist of people willing to take your place.
-                            Not attending a hackathon and not letting us know could result in removal from future
-                            hackathons and events</p>
-                    </>
-                }
-            />
-            <FAQEntry
-                question="What if I have more questions?"
-                answer={
-                    <>
-                        Email <a href="mailto:hackh@bu.edu">hackh@bu.edu</a> or use our{" "}
-                        <a href="/contact">contact form</a>.
-                    </>
-                }
-            />
-        </Page>
+                />
+                <FAQEntry
+                    question="How do I choose a track?"
+                    answer={
+                        <>
+                            <p>In our hackathon applications, you can choose the track that you are interested in! If you
+                                wish to change your track, you have until two weeks before the hackathon commences to email
+                                <a href="mailto:hackh@bu.edu"> hackh@bu.edu</a> to change your track.</p>
+                        </>
+                    }
+                />
+                <FAQEntry
+                    question="What if I'm unable to attend the hackathon I signed up for?"
+                    answer={
+                        <>
+                            <p>If you're suddenly unable to attend a hackathon, please email
+                                <a href="mailto:hackh@bu.edu"> hackh@bu.edu</a> right away.
+                                For most of our events we have a waitlist of people willing to take your place.
+                                Not attending a hackathon and not letting us know could result in removal from future
+                                hackathons and events</p>
+                        </>
+                    }
+                />
+                <FAQEntry
+                    question="What if I have more questions?"
+                    answer={
+                        <>
+                            Email <a href="mailto:hackh@bu.edu">hackh@bu.edu</a> or use our{" "}
+                            <a href="/contact">contact form</a>.
+                        </>
+                    }
+                />
+            </Page>
+        </>
+
     );
 }
