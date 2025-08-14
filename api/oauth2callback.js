@@ -1,9 +1,7 @@
 import { google } from 'googleapis';
 
 export default async function handler(req, res) {
-    if (req.method !== 'GET') {
-        return res.status(405).json({ error: 'Method not allowed' });
-    }
+    if (req.method !== 'GET') return res.status(405).json({ error: 'Method not allowed' });
 
     const code = req.query.code;
     if (!code) return res.status(400).send('Missing code parameter');
@@ -17,7 +15,6 @@ export default async function handler(req, res) {
 
         const { tokens } = await oauth2Client.getToken(code);
 
-        // Send tokens back to frontend — frontend must store them securely
         res.status(200).json(tokens);
     } catch (error) {
         console.error('Error retrieving access token', error);
