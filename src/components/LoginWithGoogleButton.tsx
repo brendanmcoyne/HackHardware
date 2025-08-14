@@ -1,6 +1,6 @@
 const LoginWithGoogleButton = () => {
     const handleLogin = () => {
-        window.location.href = 'http://localhost:3000/auth/google';
+        window.location.href = '/api/auth-google';
     };
 
     return <button onClick={handleLogin}>Login with Google</button>;
