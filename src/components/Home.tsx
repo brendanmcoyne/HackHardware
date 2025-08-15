@@ -31,7 +31,6 @@ const LogoWrapper = styled.div`
     }
 `;
 
-
 const WrapperDiv = styled.div`
     display: flex;
     flex-direction: column;
@@ -51,15 +50,44 @@ const TitleText = styled.h2`
     z-index: 1;
 `;
 
+const LogoWrapperDiv = styled.div`
+    position: relative;
+    display: inline-block;
+
+    &::before {
+        content: "";
+        position: absolute;
+        top: 50%;
+        left: 50%;
+        transform: translate(-50%, -50%);
+        width: 350px;
+        height: 350px;
+        border-radius: 50%;
+        background: rgba(0, 123, 255, 0); /* start transparent */
+        filter: blur(50px);
+        z-index: -1;
+        transition: background 0.3s ease, transform 0.3s ease; /* smooth transition */
+    }
+
+    &:hover::before {
+        background: rgba(0, 123, 255, 0.4); /* blue glow on hover */
+        transform: translate(-50%, -50%) scale(1.1); /* optional: slightly enlarge the glow */
+    }
+`;
+
 const Image = styled.img`
     display: block;
     margin: 0;
-    padding: 0;
-    max-width: 100%;
     width: 300px;
     height: auto;
-    z-index: 2;
+    z-index: 1;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05);
+    }
 `;
+
 
 const TextPassage = styled.p`
     max-width: 700px;
@@ -72,7 +100,10 @@ export default function Home() {
         <>
             <LogoWrapper>
                 <WrapperDiv>
-                    <Image src="/HackHardware.png" alt="Logo" width={200} />
+                    <LogoWrapperDiv>
+                        <Image src="/HackHardware.png" alt="Logo" />
+                    </LogoWrapperDiv>
+
                     <TitleText>Welcome to HackHardware!</TitleText>
                 </WrapperDiv>
             </LogoWrapper>

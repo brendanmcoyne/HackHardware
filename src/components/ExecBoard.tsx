@@ -146,13 +146,13 @@ export default function ExecBoard() {
                         <Class>Class of 2026</Class>
                     </BoardMember>
                     <BoardMember>
-                        <Image src="/Evan.JPG" alt={"Evan"} />
+                        <Image src="/Evan.JPG" alt={"Evan"} style={{ objectPosition: "center 20%" }} />
                         <Name>Evan Leong</Name>
                         <Title>Leadership Shadow</Title>
                         <Class>Class of 2028</Class>
                     </BoardMember>
                     <BoardMember>
-                        <Image src="/HackHardware.png" alt={"Elina"} style={{backgroundColor: "white"}} />
+                        <Image src="/Elina.jpg" alt={"Elina"} style={{ objectPosition: "center 20%" }} />
                         <Name>Elina Wang</Name>
                         <Title>Outreach & Marketing Liaison</Title>
                         <Class>Class of 2028</Class>
