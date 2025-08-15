@@ -14,7 +14,7 @@ const FooterText = styled.p`
 export default function Footer() {
     return (
         <FooterWrapper>
-            <FooterText>HackHardware</FooterText>
+            <FooterText>All Rights Reserved by HackHardware</FooterText>
         </FooterWrapper>
     );
 }
