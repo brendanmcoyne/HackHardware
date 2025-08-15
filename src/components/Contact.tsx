@@ -117,7 +117,7 @@ const Contact = () => {
 
     return (
         <Page>
-            <Title>Contact Us</Title>
+            <Title>Contact Form</Title>
             <FormWrapper>
                 <Input
                     placeholder="Your Name"
