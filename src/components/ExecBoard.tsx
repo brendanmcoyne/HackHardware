@@ -1,4 +1,5 @@
 import styled from "styled-components";
+import { motion } from "framer-motion";
 
 const Page = styled.div`
     display: flex;
@@ -7,15 +8,16 @@ const Page = styled.div`
     align-items: center;
 `;
 
-const PhotoDiv = styled.div`
+const PhotoDiv = styled(motion.div)`
     display: grid;
     grid-template-columns: repeat(4, 1fr);
+    gap: 20px;
     background-color: #e6e6e5;
     border-radius: 8px;
     padding: 14px;
 `;
 
-const BoardMember = styled.div`
+const BoardMember = styled(motion.div)`
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -26,16 +28,20 @@ const Image = styled.img`
     width: 200px;
     height: 200px;
     object-fit: cover;
-    border-radius: 8px; /* optional: rounded corners */
-    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15); /* optional: subtle shadow */
+    border-radius: 8px;
+    box-shadow: 0 2px 6px rgba(0, 0, 0, 0.15);
     margin-bottom: 0.5rem;
+    transition: transform 0.3s ease;
+
+    &:hover {
+        transform: scale(1.05);
+    }
 `;
 
 const Name = styled.h3`
     font-weight: bold;
     font-size: 1.5rem;
-    margin-bottom: 0.5rem;
-    margin-top: 0.5rem;
+    margin: 0;
 `;
 
 const Title = styled.p`
@@ -48,21 +54,13 @@ const Class = styled.p`
     font-size: 10px;
 `;
 
-const TextSection = styled.p`
-    max-width: 500px;
-    margin-bottom: 40px;
-    background-color: #006eaa;
-    border-radius: 8px;
-    color: white;
-    padding: 20px;
-    font-weight: bold;
+const SectionText = styled(motion.p)`
+    font-size: 1.1rem;
+    margin: 4rem 0;
+    max-width: 700px;
+    color: #444;
+    line-height: 1.6;
     text-align: center;
-    font-size: 20px;
-`;
-
-const SectionText = styled.h2`
-    font-weight: bold;
-    font-size: 50px;
 `;
 
 const LogoWrapper = styled.div`
@@ -74,18 +72,17 @@ const LogoWrapper = styled.div`
     display: flex;
     justify-content: center;
     align-items: center;
-    position: relative;   
+    position: relative;
     z-index: 0;
 
     &::before {
         content: "";
         position: absolute;
-        inset: 0;         
+        inset: 0;
         background: rgba(0, 0, 0, 0.4);
-        z-index: 1;        
+        z-index: 1;
     }
 `;
-
 
 const WrapperDiv = styled.div`
     display: flex;
@@ -115,64 +112,49 @@ export default function ExecBoard() {
             </LogoWrapper>
 
             <Page>
-                <SectionText>Meet the Executive Board!</SectionText>
-                <TextSection>Our Executive Board is a passionate team of student leaders dedicated to bridging the gap between
+                <SectionText
+                    initial={{ opacity: 0, y: 40 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.8 }}
+                    viewport={{ once: true }}
+                >
+                    Our Executive Board is a passionate team of student leaders dedicated to bridging the gap between
                     hardware and software. Each member brings unique strengths—from technical expertise to outreach and
                     organization—that help foster a supportive, innovative, and inclusive community. Get to know the
-                    people who make it all happen!</TextSection>
-                <PhotoDiv>
-                    <BoardMember>
-                        <Image src="/Christian.JPG" alt={"Chris"} style={{ objectPosition: "center top" }}/>
-                        <Name>Christian Hanson</Name>
-                        <Title>President</Title>
-                        <Class>Class of 2026</Class>
-                    </BoardMember>
-                    <BoardMember>
-                        <Image src="/Valerie.jpg" alt={"Valerie"} />
-                        <Name>Valerie Dam-Nguyen</Name>
-                        <Title>Vice President</Title>
-                        <Class>Class of 2028</Class>
-                    </BoardMember>
-                    <BoardMember>
-                        <Image src="/Primah.jpeg" alt={"Primah"} />
-                        <Name>Primah Muwanga</Name>
-                        <Title>Secretary</Title>
-                        <Class>Class of 2026</Class>
-                    </BoardMember>
-                    <BoardMember>
-                        <Image src="/Brendan.jpg" alt={"Brendan"} style={{ objectPosition: "center top" }}/>
-                        <Name>Brendan Coyne</Name>
-                        <Title>Treasurer</Title>
-                        <Class>Class of 2026</Class>
-                    </BoardMember>
-                    <BoardMember>
-                        <Image src="/Evan.JPG" alt={"Evan"} style={{ objectPosition: "center 20%" }} />
-                        <Name>Evan Leong</Name>
-                        <Title>Leadership Shadow</Title>
-                        <Class>Class of 2028</Class>
-                    </BoardMember>
-                    <BoardMember>
-                        <Image src="/Elina.jpg" alt={"Elina"} style={{ objectPosition: "center 20%" }} />
-                        <Name>Elina Wang</Name>
-                        <Title>Outreach & Marketing Liaison</Title>
-                        <Class>Class of 2028</Class>
-                    </BoardMember>
-                    <BoardMember>
-                        <Image src="/Justin.png" alt={"Justin"} />
-                        <Name>Justin Nascimento</Name>
-                        <Title>Technical Coordinator</Title>
-                        <Class>Class of 2026</Class>
-                    </BoardMember>
-                    <BoardMember>
-                        <Image src="/Felipe.JPG" alt={"Felipe"} />
-                        <Name>Felipe Donati Chiara</Name>
-                        <Title>Technical Coordinator</Title>
-                        <Class>Class of 2028</Class>
-                    </BoardMember>
+                    people who make it all happen!
+                </SectionText>
+
+                <PhotoDiv
+                    initial={{ opacity: 0, y: 50 }}
+                    whileInView={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 1, staggerChildren: 0.2 }}
+                    viewport={{ once: true }}
+                >
+                    {[
+                        { src: "/Christian.JPG", name: "Christian Hanson", title: "President", cls: "Class of 2026", style: { objectPosition: "center top" } },
+                        { src: "/Valerie.jpg", name: "Valerie Dam-Nguyen", title: "Vice President", cls: "Class of 2028" },
+                        { src: "/Primah.jpeg", name: "Primah Muwanga", title: "Secretary", cls: "Class of 2026" },
+                        { src: "/Brendan.jpg", name: "Brendan Coyne", title: "Treasurer", cls: "Class of 2026", style: { objectPosition: "center top" } },
+                        { src: "/Evan.JPG", name: "Evan Leong", title: "Leadership Shadow", cls: "Class of 2028", style: { objectPosition: "center 20%" } },
+                        { src: "/Elina.jpg", name: "Elina Wang", title: "Outreach & Marketing Liaison", cls: "Class of 2028", style: { objectPosition: "center 20%" } },
+                        { src: "/Justin.png", name: "Justin Nascimento", title: "Technical Coordinator", cls: "Class of 2026" },
+                        { src: "/Felipe.JPG", name: "Felipe Donati Chiara", title: "Technical Coordinator", cls: "Class of 2028" },
+                    ].map((member, i) => (
+                        <BoardMember
+                            key={i}
+                            initial={{ opacity: 0, y: 20 }}
+                            whileInView={{ opacity: 1, y: 0 }}
+                            transition={{ duration: 0.6, delay: i * 0.15 }}
+                            viewport={{ once: true }}
+                        >
+                            <Image src={member.src} alt={member.name} style={member.style || {}} />
+                            <Name>{member.name}</Name>
+                            <Title>{member.title}</Title>
+                            <Class>{member.cls}</Class>
+                        </BoardMember>
+                    ))}
                 </PhotoDiv>
             </Page>
         </>
-
-
     );
 }

@@ -63,15 +63,15 @@ const LogoWrapperDiv = styled.div`
         width: 350px;
         height: 350px;
         border-radius: 50%;
-        background: rgba(0, 123, 255, 0); /* start transparent */
+        background: rgba(0, 123, 255, 0); 
         filter: blur(50px);
         z-index: -1;
-        transition: background 0.3s ease, transform 0.3s ease; /* smooth transition */
+        transition: background 0.3s ease, transform 0.3s ease;
     }
 
     &:hover::before {
-        background: rgba(0, 123, 255, 0.4); /* blue glow on hover */
-        transform: translate(-50%, -50%) scale(1.1); /* optional: slightly enlarge the glow */
+        background: rgba(0, 123, 255, 0.4); 
+        transform: translate(-50%, -50%) scale(1.1); 
     }
 `;
 
@@ -88,12 +88,28 @@ const Image = styled.img`
     }
 `;
 
-
 const TextPassage = styled.p`
     max-width: 700px;
-    font-size: 20px;
+    font-size: 1.1rem;
 `;
 
+const LinkButton = styled.a`
+    display: inline-block;
+    margin-top: 20px;
+    padding: 12px 24px;
+    font-size: 18px;
+    font-weight: bold;
+    color: white;
+    background-color: #007bff;
+    border-radius: 8px;
+    text-decoration: none;
+    transition: background 0.3s ease, transform 0.2s ease;
+
+    &:hover {
+        background-color: #0056b3;
+        transform: scale(1.05);
+    }
+`;
 
 export default function Home() {
     return (
@@ -109,24 +125,34 @@ export default function Home() {
             </LogoWrapper>
 
             <Page style={{marginTop: "140px" }}>
+                {/* About Section */}
                 <TitleText style={{color: "black", marginBottom: "0"}}>About Us</TitleText>
-                <TextPassage style={{marginTop: "0"}}>HackHardware is one of Boston University's top engineering clubs. We help to bridge the gap
+                <TextPassage style={{marginTop: "0"}}>
+                    HackHardware is one of Boston University's top engineering clubs. We help to bridge the gap
                     between hardware and software engineering. We offer hands-on learning through our biweekly
                     meetings, guiding members in designing, prototyping, and programming engineering projects. Our
                     vision is to cultivate well-rounded engineers who can confidently tackle complex challenges in
                     all areas of engineering and science.
                 </TextPassage>
 
-                <TextPassage>Each semester, we host hackathons that challenge participants to bring innovative ideas to life
+                <TextPassage>
+                    Each semester, we host hackathons that challenge participants to bring innovative ideas to life
                     through collaborative, fast-paced engineering. These events are open to all experience levels and
                     provide a welcoming environment to learn new skills, explore creative solutions, and build real
                     hardware-software projects. From Arduino-based systems to Raspberry Pi integrations, our hackathons
                     are a hands-on combination of engineering, teamwork, and problem-solving.
                 </TextPassage>
-            </Page>
 
-            <Page>
-                <TextPassage>Yurtis</TextPassage>
+                {/* Sponsorship Section */}
+                <TitleText style={{color: "black", marginTop: "100px", marginBottom: "0"}}>Sponsorship</TitleText>
+                <TextPassage style={{marginTop: "0"}}>
+                    HackHardware is made possible through the generous support of our sponsors. By partnering with us,
+                    you’ll help foster the next generation of engineers and innovators at Boston University.
+                    Sponsorship opportunities include event branding, direct student engagement, and more.
+                </TextPassage>
+                <LinkButton href="/HackHardwareSponsorship.pdf" target="_blank" rel="noopener noreferrer">
+                    View Sponsorship Package
+                </LinkButton>
             </Page>
         </>
     );
