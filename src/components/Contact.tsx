@@ -13,25 +13,6 @@ const Page = styled.div`
     position: relative;
 `;
 
-const Particle = styled.div<{ top: number; left: number; size: number; delay: number }>`
-  position: absolute;
-  top: ${({ top }) => top}%;
-  left: ${({ left }) => left}%;
-  width: ${({ size }) => size}px;
-  height: ${({ size }) => size}px;
-  border-radius: 50%;
-  background: rgba(0, 123, 255, 0.2);
-  z-index: 0;
-  animation: float 6s ease-in-out infinite;
-  animation-delay: ${({ delay }) => delay}s;
-
-  @keyframes float {
-    0% { transform: translateY(0) scale(1); }
-    50% { transform: translateY(-20px) scale(1.2); }
-    100% { transform: translateY(0) scale(1); }
-  }
-`;
-
 const LogoWrapper = styled.div`
     width: 100%;
     height: 400px;
@@ -177,17 +158,6 @@ export default function Contact() {
 
     return (
         <Page>
-            {/* Floating particles */}
-            {Array.from({ length: 15 }).map((_, i) => (
-                <Particle
-                    key={i}
-                    top={Math.random() * 90}
-                    left={Math.random() * 90}
-                    size={Math.random() * 20 + 8}
-                    delay={Math.random() * 3}
-                />
-            ))}
-
             <LogoWrapper>
                 <TitleText>Contact HackHardware</TitleText>
             </LogoWrapper>

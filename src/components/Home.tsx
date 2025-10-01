@@ -186,9 +186,9 @@ const CarouselImage = styled(motion.img)`
 const ArrowButton = styled.button<{ left?: boolean }>`
     position: absolute;
     top: 50%;
-    ${({ left }) => (left ? 'left: 75px;' : 'right: 75px;')} 
+    ${({ left }) => (left ? 'left: 100px;' : 'right: 100px;')} 
     transform: translateY(-50%);
-    background: rgba(0, 123, 255, 0.7);
+    background: #006eaa;
     color: white;
     border: none;
     border-radius: 50%;
