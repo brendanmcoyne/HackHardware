@@ -7,7 +7,6 @@ const FooterWrapper = styled.footer`
     display: flex;
     flex-direction: column;
     align-items: center;
-    gap: 0.5rem;
 `;
 
 const FooterText = styled.p`
@@ -23,7 +22,7 @@ const FooterLinks = styled.div`
   flex-wrap: wrap;
   
   a {
-    color: #aeefff; /* lighter accent color */
+    color: #aeefff; 
     text-decoration: none;
     font-weight: bold;
     transition: color 0.2s ease;
@@ -43,7 +42,7 @@ export default function Footer() {
                 <a href="https://www.instagram.com/hackhardware_bu/" target="_blank" rel="noopener noreferrer">
                     Instagram
                 </a>
-                <a href="https://www.instagram.com/hackhardware_bu/" target="_blank" rel="noopener noreferrer">
+                <a href="https://discord.com/invite/GdEPmEC8bU?fbclid=PAZXh0bgNhZW0CMTEAAacNoA7SvV9G5jVHUbRq6qDDUTT9XMk4c6_uZxspK0CkXqwT9Aij_zOI-Oxtfw_aem_JGBMS7I_qz3U1VocHjWaFw" target="_blank" rel="noopener noreferrer">
                     Discord
                 </a>
                 <a href="https://www.instagram.com/hackhardware_bu/" target="_blank" rel="noopener noreferrer">
