@@ -6,31 +6,58 @@ const Page = styled.div`
     flex-direction: column;
     align-items: center;
     width: 100%;
-    padding: 2rem;
     box-sizing: border-box;
+    text-align: center;
+    padding: 2rem 1rem;
+    background: radial-gradient(circle at top, #e0f7ff 0%, #f5f5f5 100%);
+    position: relative;
 `;
 
-const Section = styled.div`
+const Particle = styled.div<{ top: number; left: number; size: number; delay: number }>`
+  position: absolute;
+  top: ${({ top }) => top}%;
+  left: ${({ left }) => left}%;
+  width: ${({ size }) => size}px;
+  height: ${({ size }) => size}px;
+  border-radius: 50%;
+  background: rgba(0, 123, 255, 0.2);
+  z-index: 0;
+  animation: float 6s ease-in-out infinite;
+  animation-delay: ${({ delay }) => delay}s;
+
+  @keyframes float {
+    0% { transform: translateY(0) scale(1); }
+    50% { transform: translateY(-20px) scale(1.2); }
+    100% { transform: translateY(0) scale(1); }
+  }
+`;
+
+const LogoWrapper = styled.div`
     width: 100%;
-    max-width: 800px;
-    margin-bottom: 60px;
+    height: 400px;
+    background-image: url("/circuits.jpg");
+    background-size: cover;
+    background-position: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    position: relative;
+    margin-bottom: 2rem;
+
+    &::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background: rgba(0, 0, 0, 0.3);
+        z-index: 1;
+    }
 `;
 
-const SectionTitle = styled.h2`
-    font-weight: 700;
-    font-size: 2rem;
-    text-align: center;
-    margin-bottom: 20px;
-    color: #006eaa;
-`;
-
-const Paragraph = styled.p`
-    max-width: 700px;
-    margin: 0 auto 2rem auto;
-    text-align: center;
-    font-size: 1.1rem;
-    line-height: 1.6;
-    color: #333;
+const TitleText = styled.h1`
+    font-weight: bold;
+    font-size: 3rem;
+    color: #ffffff;
+    z-index: 2;
 `;
 
 const FormWrapper = styled.div`
@@ -40,101 +67,81 @@ const FormWrapper = styled.div`
     box-shadow: 0 2px 10px rgba(0,0,0,0.1);
     display: flex;
     flex-direction: column;
+    max-width: 700px;
+    width: 100%;
+`;
+
+const Input = styled.input<{ $error?: boolean }>`
+    width: 100%;
+    padding: 12px;
+    margin-bottom: 1rem;
+    border: ${({ $error }) => ($error ? "2px solid salmon" : "1px solid #ccc")};
+    border-radius: 8px;
+    font-size: 1rem;
+    box-sizing: border-box;
+`;
+
+const TextArea = styled.textarea<{ $error?: boolean }>`
+    width: 100%;
+    padding: 12px;
+    height: 120px;
+    margin-bottom: 1rem;
+    border: ${({ $error }) => ($error ? "2px solid salmon" : "1px solid #ccc")};
+    border-radius: 8px;
+    font-size: 1rem;
+    resize: none;
+    box-sizing: border-box;
+`;
+
+const Button = styled.button`
+    width: 100%;
+    padding: 12px;
+    background-color: #006eaa;
+    color: white;
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    font-weight: 600;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+
+    &:disabled {
+        background-color: #636e72;
+        cursor: not-allowed;
+    }
+
+    &:hover:enabled {
+        background-color: #005580;
+    }
+`;
+
+const SectionTitle = styled.h2` 
+    font-weight: 700; 
+    font-size: 2rem; 
+    text-align: center; 
+    margin-bottom: 20px; 
+    color: #006eaa; 
+`;
+
+const Paragraph = styled.p` 
+    max-width: 700px; 
+    margin: 0 auto 2rem auto; 
+    text-align: center; 
+    font-size: 1.1rem; 
+    line-height: 1.6; 
+    color: #333; 
 `;
 
 const StatusMessage = styled.p<{ status: string }>`
-    color: ${({ status }) => status === "success"
-    ? "green" : status === "fail" || status === "error" ? "red" : status === "missing" ? "salmon" : "#333"};
+    color: ${({ status }) =>
+            status === "success" ? "green" :
+                    status === "fail" || status === "error" ? "red" :
+                            status === "missing" ? "salmon" : "#333"};
     margin-top: 1rem;
     text-align: center;
 `;
 
-const LogoWrapper = styled.div`
-    width: 100%;
-    height: 700px;
-    background-image: url("/circuits.jpg");
-    background-size: cover;
-    background-position: center;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    position: relative;
-    z-index: 0;
-
-    &::before {
-        content: "";
-        position: absolute;
-        inset: 0;
-        background: rgba(0, 0, 0, 0.4);
-        z-index: 1;
-    }
-`;
-
-const WrapperDiv = styled.div`
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  transform: translateY(-20px);
-  position: relative;
-  z-index: 2;
-`;
-
-const TitleText = styled.h2`
-  font-weight: bold;
-  font-size: 50px;
-  margin: 0;
-  line-height: 1.1;
-  color: lightgray;
-  z-index: 1;
-`;
-
-const Input = styled.input<{ $error?: boolean }>`
-  width: 100%;
-  padding: 12px;
-  margin-bottom: 1rem;
-  border: ${({ $error }) => ($error ? "2px solid salmon" : "1px solid #ccc")};
-  border-radius: 8px;
-  font-size: 1rem;
-  box-sizing: border-box; /* ✅ ensures consistent sizing */
-`;
-
-const TextArea = styled.textarea<{ $error?: boolean }>`
-  width: 100%;
-  padding: 12px;
-  height: 120px;
-  margin-bottom: 1rem;
-  border: ${({ $error }) => ($error ? "2px solid salmon" : "1px solid #ccc")};
-  border-radius: 8px;
-  font-size: 1rem;
-  resize: none;
-  box-sizing: border-box; /* ✅ keeps sizing aligned */
-`;
-
-const Button = styled.button`
-  width: 100%;
-  padding: 12px;
-  background-color: #006eaa;
-  color: white;
-  border: none;
-  border-radius: 8px;
-  font-size: 1rem;
-  font-weight: 600;
-  cursor: pointer;
-  transition: background-color 0.3s ease;
-  box-sizing: border-box; /* ✅ fixes mismatch */
-
-  &:disabled {
-    background-color: #636e72;
-    cursor: not-allowed;
-  }
-
-  &:hover:enabled {
-    background-color: #005580;
-  }
-`;
-
-
-const Contact = () => {
+export default function Contact() {
     const [name, setName] = useState("");
     const [email, setEmail] = useState("");
     const [message, setMessage] = useState("");
@@ -146,7 +153,6 @@ const Contact = () => {
             setStatus("missing");
             return;
         }
-
         setSending(true);
         setStatus(null);
         try {
@@ -155,15 +161,12 @@ const Contact = () => {
                 headers: { "Content-Type": "application/json" },
                 body: JSON.stringify({ name, email, message }),
             });
-
             if (res.ok) {
                 setStatus("success");
                 setName("");
                 setEmail("");
                 setMessage("");
-            } else {
-                setStatus("fail");
-            }
+            } else setStatus("fail");
         } catch (err) {
             console.error(err);
             setStatus("error");
@@ -173,55 +176,41 @@ const Contact = () => {
     };
 
     return (
-        <>
+        <Page>
+            {/* Floating particles */}
+            {Array.from({ length: 15 }).map((_, i) => (
+                <Particle
+                    key={i}
+                    top={Math.random() * 90}
+                    left={Math.random() * 90}
+                    size={Math.random() * 20 + 8}
+                    delay={Math.random() * 3}
+                />
+            ))}
+
             <LogoWrapper>
-                <WrapperDiv>
-                    <TitleText>Contact Us!</TitleText>
-                </WrapperDiv>
+                <TitleText>Contact HackHardware</TitleText>
             </LogoWrapper>
 
-            <Page>
-                <Section>
-                    <SectionTitle>📬 Get in Touch</SectionTitle>
-                    <Paragraph>
-                        Have questions about HackHardware? Want to collaborate, sponsor, or just say hi?
-                        Fill out the form below and we’ll get back to you as soon as possible.
-                    </Paragraph>
-                    <FormWrapper>
-                        <Input
-                            placeholder="Your Name"
-                            value={name}
-                            onChange={(e) => setName(e.target.value)}
-                            $error={status === "missing" && !name.trim()}
-                        />
-                        <Input
-                            placeholder="Your Email"
-                            value={email}
-                            onChange={(e) => setEmail(e.target.value)}
-                            $error={status === "missing" && !email.trim()}
-                        />
-                        <TextArea
-                            placeholder="Your Message"
-                            value={message}
-                            onChange={(e) => setMessage(e.target.value)}
-                            $error={status === "missing" && !message.trim()}
-                        />
-                        <Button onClick={sendMessage} disabled={sending}>
-                            {sending ? "Sending..." : "Send Message"}
-                        </Button>
-                        {status && (
-                            <StatusMessage status={status}>
-                                {status === "missing" && "⚠️ Please fill out all fields."}
-                                {status === "success" && "✅ Message sent successfully!"}
-                                {status === "fail" && "❌ Failed to send message. Please try again."}
-                                {status === "error" && "⚠️ An unexpected error occurred."}
-                            </StatusMessage>
-                        )}
-                    </FormWrapper>
-                </Section>
-            </Page>
-        </>
+            <SectionTitle>📬 Get in Touch</SectionTitle>
+            <Paragraph>
+                Have questions about HackHardware? Want to collaborate, sponsor, or just say hi?
+                Fill out the form below and we’ll get back to you as soon as possible.
+            </Paragraph>
+            <FormWrapper>
+                <Input placeholder="Your Name" value={name} onChange={e => setName(e.target.value)} $error={status==="missing" && !name.trim()} />
+                <Input placeholder="Your Email" value={email} onChange={e => setEmail(e.target.value)} $error={status==="missing" && !email.trim()} />
+                <TextArea placeholder="Your Message" value={message} onChange={e => setMessage(e.target.value)} $error={status==="missing" && !message.trim()} />
+                <Button onClick={sendMessage} disabled={sending}>{sending ? "Sending..." : "Send Message"}</Button>
+                {status && (
+                    <StatusMessage status={status}>
+                        {status === "missing" && "⚠️ Please fill out all fields."}
+                        {status === "success" && "✅ Message sent successfully!"}
+                        {status === "fail" && "❌ Failed to send message. Please try again."}
+                        {status === "error" && "⚠️ An unexpected error occurred."}
+                    </StatusMessage>
+                )}
+            </FormWrapper>
+        </Page>
     );
-};
-
-export default Contact;
+}

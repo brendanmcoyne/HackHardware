@@ -9,6 +9,7 @@ import styled from "styled-components";
 import { createBrowserRouter, Route, RouterProvider, Routes } from "react-router";
 import { useEffect } from "react";
 import { useLocation } from "react-router-dom";
+import GlobalStyle from "./GlobalStyle";
 
 function ScrollToTop() {
     const { pathname } = useLocation();
@@ -31,12 +32,13 @@ const MainWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-top: 70px; /* adjust based on navbar height */
+  padding-top: 70px;
 `;
 
 function Root() {
     return (
         <>
+            <GlobalStyle />
             <Nav />
             <MainWrapper>
                 <ScrollToTop />
