@@ -60,6 +60,7 @@ const Input = styled.input<{ $error?: boolean }>`
     border-radius: 8px;
     font-size: 1rem;
     box-sizing: border-box;
+    background-color: #ffffff;
 `;
 
 const TextArea = styled.textarea<{ $error?: boolean }>`
@@ -72,6 +73,7 @@ const TextArea = styled.textarea<{ $error?: boolean }>`
     font-size: 1rem;
     resize: none;
     box-sizing: border-box;
+    background-color: #ffffff;
 `;
 
 const Button = styled.button`
