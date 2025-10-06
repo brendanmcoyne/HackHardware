@@ -1,6 +1,7 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
 import PhotoSlide from "../components/PhotoSlide.tsx";
+import { Link } from "react-router-dom";
 
 const Page = styled.div`
     display: flex;
@@ -265,7 +266,9 @@ export default function Home() {
                 e-board members will get back to you! We look forward to hearing from you!
             </TextPassage>
 
-            <LinkButton href="/contact">Contact Form</LinkButton>
+            <LinkButton as={Link} to="/contact">
+                Contact Form
+            </LinkButton>
 
             <BottomImageWrapper>
                 <BottomImage src="/IMG_1495.jpg" alt="Bottom Page Image" />
