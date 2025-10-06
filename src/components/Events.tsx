@@ -21,7 +21,7 @@ const Section = styled.div`
 
 const Paragraph = styled.p`
     max-width: 800px;
-    margin: 4rem 0;
+    margin: 3rem 0;
     text-align: center;
     font-size: 1.1rem;
     line-height: 1.6;
@@ -37,7 +37,7 @@ const EventGrid = styled(motion.div)`
 const EventImage = styled.div`
     width: 100%;
     height: 180px;
-    background-color: #ddd; /* placeholder */
+    background-color: #ddd; 
     background-size: cover;
     background-position: center;
 `;
@@ -79,13 +79,13 @@ const LogoWrapper = styled.div`
     justify-content: center;
     align-items: center;
     position: relative;
-    margin-bottom: 2rem; /* consistent spacing with Contact page */
+    margin-bottom: 2rem;
 
     &::before {
         content: "";
         position: absolute;
         inset: 0;
-        background: rgba(0, 0, 0, 0.3); /* softer overlay */
+        background: rgba(0, 0, 0, 0.3); 
         z-index: 1;
     }
 `;

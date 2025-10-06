@@ -1,6 +1,6 @@
 import styled from "styled-components";
 import { motion } from "framer-motion";
-import { useState } from "react";
+import PhotoSlide from "../components/PhotoSlide.tsx";
 
 const Page = styled.div`
     display: flex;
@@ -147,83 +147,31 @@ const LinkButton = styled.a`
     }
 `;
 
-
-const CarouselContainer = styled.div`
-    position: relative;
-    width: 100%;
-    max-width: 1500px;
-    margin: 4rem auto;
-    overflow: visible; 
-    display: flex;
-    justify-content: center;
-    align-items: center;
-`;
-
-const CarouselTrack = styled(motion.div)`
-    display: flex;
-    gap: 2rem;
-    will-change: transform;
-`;
-
-const CarouselImage = styled(motion.img)`
-    width: 450px;
-    max-width: 90vw;
-    height: auto;
+const BottomImageWrapper = styled.div`
+    width: 90%;
+    max-width: 1000px;
+    overflow: hidden;
+    margin: 4rem 0 2rem;
     border-radius: 12px;
     box-shadow: 0 6px 18px rgba(0,0,0,0.15);
-    flex-shrink: 0;
-    cursor: pointer;
-    transition: transform 0.3s ease, filter 0.3s ease;
-    transform-origin: center center; 
-
-    &:hover {
-        transform: scale(1.05);
-        filter: drop-shadow(0px 0px 20px rgba(0,123,255,0.5));
+    position: relative;
+    
+    height: auto;
+    @media (min-width: 768px) {
+        height: 500px;
     }
-`;
-
-
-const ArrowButton = styled.button<{ left?: boolean }>`
-    position: absolute;
-    top: 50%;
-    ${({ left }) => (left ? 'left: 100px;' : 'right: 100px;')} 
-    transform: translateY(-50%);
-    background: #006eaa;
-    color: white;
-    border: none;
-    border-radius: 50%;
-    width: 40px;
-    height: 70px;
-    font-size: 2rem;
-    cursor: pointer;
-    z-index: 10;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    transition: background 0.3s ease;
-
-    &:hover {
-        background: rgba(0, 123, 255, 1);
-    }
-`;
-
-const BottomImageWrapper = styled.div`
-    width: 80%;
-    max-width: 1000px;
-    height: 500px;          
-    overflow: hidden;        
-    margin: 4rem 0 2rem;
-    border-radius: 12px;     
-    box-shadow: 0px 6px 18px rgba(0,0,0,0.15);
 `;
 
 const BottomImage = styled.img`
-  width: 100%;
-  height: auto;
-  transform: translateY(-170px);  
-  object-fit: cover;            
-`;
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+    transform: translateY(0);
 
+    @media (min-width: 768px) {
+        transform: translateY(-170px);
+    }
+`;
 
 
 const imageList = [
@@ -238,20 +186,6 @@ const imageList = [
 ];
 
 export default function Home() {
-
-    const imagesPerSlide = 2;
-    const totalSlides = Math.ceil(imageList.length / imagesPerSlide);
-    const [slideIndex, setSlideIndex] = useState(0);
-
-    const next = () => setSlideIndex((prev) => (prev + 1) % totalSlides);
-    const prev = () => setSlideIndex((prev) => (prev - 1 + totalSlides) % totalSlides);
-
-    const currentImages = imageList.slice(
-        slideIndex * imagesPerSlide,
-        slideIndex * imagesPerSlide + imagesPerSlide
-    );
-
-
     return (
         <Page>
             <LogoSection>
@@ -299,26 +233,11 @@ export default function Home() {
                 are a hands-on combination of engineering, teamwork, and problem-solving.
             </TextPassage>
 
+            {/* ✅ Carousel is now its own component */}
             <SectionTitle>Our Projects</SectionTitle>
-            <CarouselContainer>
-                <ArrowButton left onClick={prev}>&lt;</ArrowButton>
-                <ArrowButton onClick={next}>&gt;</ArrowButton>
+            <PhotoSlide images={imageList} imagesPerSlide={2} />
 
-                <CarouselTrack
-                    key={slideIndex}
-                    initial={{ opacity: 0, x: 50 }}
-                    animate={{ opacity: 1, x: 0 }}
-                    exit={{ opacity: 0, x: -50 }}
-                    transition={{ type: "spring", stiffness: 120, damping: 20 }}
-                >
-                    {currentImages.map((src, i) => (
-                        <CarouselImage key={i} src={src} alt={`Project ${slideIndex * imagesPerSlide + i + 1}`} />
-                    ))}
-                </CarouselTrack>
-            </CarouselContainer>
-
-
-            <SectionTitle style={{marginTop: "0"}}>Sponsorship</SectionTitle>
+            <SectionTitle style={{ marginTop: "0" }}>Sponsorship</SectionTitle>
             <TextPassage
                 initial={{ opacity: 0, y: 30 }}
                 whileInView={{ opacity: 1, y: 0 }}

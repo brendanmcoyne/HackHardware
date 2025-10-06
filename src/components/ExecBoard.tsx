@@ -84,7 +84,13 @@ const PhotoDiv = styled(motion.div)`
     width: 100%;
     max-width: 1000px;
     margin-bottom: 3rem;
+
+    @media (max-width: 768px) {
+        grid-template-columns: 1fr; 
+        gap: 15px;
+    }
 `;
+
 
 const BoardMember = styled(motion.div)`
     display: flex;
@@ -104,6 +110,11 @@ const Image = styled.img<{ shift?: string }>`
 
     &:hover {
         transform: scale(1.05) ${({ shift }) => shift || ""};
+    }
+
+    @media (max-width: 768px) {
+        width: 150px;
+        height: 150px;
     }
 `;
 
