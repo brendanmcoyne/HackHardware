@@ -87,7 +87,7 @@ export default function Footer() {
                     Discord
                 </a>
                 <a
-                    href="https://www.linkedin.com/company/hackhardware-bu/"
+                    href="https://www.linkedin.com/company/hackhardwarebu/"
                     target="_blank"
                     rel="noopener noreferrer"
                 >
