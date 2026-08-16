@@ -160,17 +160,3 @@ npm run preview
 ```
 
 Locally previews the production build.
-
-## What I Learned
-
-Building HackHardware gave me experience developing and deploying a complete website for a real organization rather than a purely experimental application. The project involved building reusable React components, implementing client-side routing, creating responsive interfaces, integrating external APIs, and handling server-side functionality through serverless endpoints.
-
-One of the more technical parts of the project was implementing the contact system. Instead of handling email directly in the frontend, the application sends contact requests to a serverless backend endpoint, which authenticates with Google using OAuth 2.0 and sends the message through the Gmail API.
-
-The project also gave me experience deploying a React application and its backend API functionality together using Vercel.
-
-## Author
-
-**Brendan Coyne**
-
-GitHub: https://github.com/brendanmcoyne
